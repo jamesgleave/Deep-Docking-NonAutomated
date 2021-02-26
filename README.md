@@ -10,7 +10,7 @@ Description of phase 1...
 
 
 #### Run phase 1
-```python
+```bash
 python jobid_writer.py -file_path path_to_project -n_it current_iteration -jid job_id -jn job_name
 python molecular_file_count_updated.py -pt project_name -it current_iteration -cdd prediction_directory -t_pos total_processors -t_samp molecules_to_dock
 python sampling.py -pt project_name -fp path_to_project_without_name -it current_iteration -dd prediction_directory -t_pos total_processors -tr_sz train_size -vl_sz val_size
@@ -23,7 +23,7 @@ python Extracting_smiles.py -pt project_name -fp path_to_project_without_name -i
 description of phase 2...
 
 #### Run phase 2
-```python
+```bash
 
 python Extract_labels.py -if is_final_iteration? -n_it current_iteration -protein project_name -file_path path_to_project_without_name -t_pos total_processors -sof docking_software
 python simple_job_models.py -n_it current_iteration -mdd morgan_directory -time 00-04:00 -file_path project_path -nhp num_hyperparameters -titr total_iterations -n_mol num_molecules --percent_first_mols percent_first_molecules -ct cutoff_threshold --percent_last_mols percent_last_mols
@@ -33,7 +33,7 @@ python simple_job_models.py -n_it current_iteration -mdd morgan_directory -time 
 description of phase 3...
 
 #### Run phase 3
-```python
+```bash
 python -u hyperparameter_result_evaluation.py -n_it current_iteration --data_path project_path -mdd morgan_directory -n_mol num_molecules
 python simple_job_predictions.py -protein project_name -file_path path_to_project_without_name -n_it current_iteration -mdd morgan_directory
 
