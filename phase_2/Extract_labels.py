@@ -28,7 +28,7 @@ n_it = int(io_args.iteration_no)
 protein = io_args.protein
 file_path = io_args.file_path
 tot_process = int(io_args.tot_process)
-key_word = io_args.score_keyword
+key_word = str(io_args.score_keyword)
 
 if is_final == 'False' or is_final == 'false':
     is_final = False
