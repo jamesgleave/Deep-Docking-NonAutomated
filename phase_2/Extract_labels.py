@@ -19,7 +19,7 @@ parser.add_argument('-n_it', '--iteration_no', required=True)
 parser.add_argument('-protein', '--protein', required=True)
 parser.add_argument('-file_path', '--file_path', required=True)
 parser.add_argument('-t_pos', '--tot_process', required=True)
-parser.add_argument('-sof', '--software', required=True)
+parser.add_argument('-score', '--score_keyword', required=True)
 
 io_args = parser.parse_args()
 
@@ -28,7 +28,7 @@ n_it = int(io_args.iteration_no)
 protein = io_args.protein
 file_path = io_args.file_path
 tot_process = int(io_args.tot_process)
-sof = io_args.software
+key_word = io_args.score_keyword
 
 if is_final == 'False' or is_final == 'false':
     is_final = False
@@ -36,15 +36,6 @@ elif is_final == 'True' or is_final == 'true':
     is_final = True
 else:
     raise TypeError('-if parameter must be a boolean (true/false)')
-
-if sof == 'GLIDE':
-    key_word = 'r_i_docking_score'
-elif sof == 'OEDDOCKING':
-    key_word = 'FRED Chemgauss4 score'
-elif sof == "AUTODOCK_GPU":
-    key_word = 'ADSCOR'
-else:
-    raise ValueError('Unknown docking software, check line 7 logs.txt and try again.')
 
 # mol_key = 'ZINC'
 print("Keyword: ", key_word)
