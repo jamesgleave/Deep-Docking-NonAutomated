@@ -33,16 +33,6 @@ if is_final == 'False' or is_final == 'false':
 elif is_final == 'True' or is_final == 'true':
     is_final = True
 
-
-def no_molecules_txt(f_name):
-    with open(f_name, 'r') as ref:
-        ct = 0
-        for line in ref:
-            if line.rstrip()[:4] == "ZINC":
-                ct += 1
-    return ct
-
-
 def get_mol_final(fname):
     # final_dict = {}
     try:
