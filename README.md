@@ -20,7 +20,7 @@ Gentile F, Agrawal V, Hsing M, Ton A-T, Ban F, Norinder U, et al. *Deep Docking:
 ## Usage
 
 ### Before starting. Preparing a database for deep docking
-Databases for DD should be obtained in SMILE format. For each compound of the database, DD requires the Morgan fingerprints of radius 2 and size 1024 bits, represented as the list of the indexes of bits that are set to 1. The  Utilities folder of this repository provides tools to facilitate the preparation of a database of SMILES structures. First, it is recommended to split the SMILES into a number of evenly populated files to facilitate other steps such as random sampling and inference, and place these files into a new folder. This reorganization can be achieved for example with *split* command in bash, and the resulting files should have txt extensions. For example, considering a *smiles.smi* file with 1 billion of compounds, to obtain 1000 evenly splitted txt files
+Databases for DD should be obtained in SMILE format. For each compound of the database, DD requires the Morgan fingerprints of radius 2 and size 1024 bits, represented as the list of the indexes of bits that are set to 1. The  Utilities folder of this repository provides tools to facilitate the preparation of a database of SMILES structures. First, it is recommended to split the SMILES into a number of evenly populated files to facilitate other steps such as random sampling and inference, and place these files into a new folder. This reorganization can be achieved for example with the *split* command in bash, and the resulting files should have txt extensions. For example, considering a *smiles.smi* file with 1 billion of compounds, to obtain 1000 evenly splitted txt files
 
 ```bash
 split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
@@ -28,7 +28,7 @@ split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
 
 Ideally the number of final files should be equal to the number of CPUs used for random sampling (phase 1, see below) and always larger than the number of GPUs used for inference (phase 3, see below). 
 
-Morgan fingerprints can be then generated in the correct DD format with
+Morgan fingerprints can be then generated in the correct format with
 
 ```bash
 python Morgan_fing.py -sfp path_smile_folder -fp path_to_morgan_folder -fn name_morgan_folder -tp num_cpus
@@ -38,7 +38,7 @@ with num_cpus = number of CPUs for multiprocessing Morgan fingeprint calculation
 
 
 ### Phase 1. Random sampling of molecules
-In phase 1 molecules are randomly sampled from the database, in order to build or augment the training set. During the first iteration, molecules are also sampled for generating the validation and test sets.
+In phase 1 molecules are randomly sampled from the database to build or augment the training set. During the first iteration, molecules are also sampled for generating the validation and test sets.
 
 #### Run phase 1
 To run phase 1, run sequentially the following commands 
@@ -55,7 +55,7 @@ val_size = sizes of test and validation sets (just used in the first iteration).
 
 
 ### After phase 1. Docking
-After phase 1 is completed, molecules grouped in the smiles folder need to be prepared and docked to the target. Once docking is completed, you should rearrange the results in three sdf files with names starting with the original sets where they come from (for example, validation_docked.sdf, training_docked.sdf, ...) and place them in a subfolder called 'docked' inside the iteration folder.
+After phase 1 is completed, molecules grouped in the smiles folder need to be prepared and docked to the target. Use your favourit docking workflow for this step. Once docking is completed, you should rearrange the results in three sdf files with names starting with the original sets where they come from (for example, validation_docked.sdf, training_docked.sdf, test_docked.sdf) and place them in a subfolder called 'docked' inside the iteration folder.
 
 
 ### Phase 2. Neural network training
