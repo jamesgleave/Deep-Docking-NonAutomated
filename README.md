@@ -20,17 +20,21 @@ Gentile F, Agrawal V, Hsing M, Ton A-T, Ban F, Norinder U, et al. *Deep Docking:
 ## Usage
 
 ### Before starting. Preparing a database for deep docking
-For each compound of the database, DD requires the SMILES as well as the Morgan fingerprints, represented as the list of the indexes of bits that are set to 1. The  Utilities folder of this repository provides tools to facilitate the preparation of a database of SMILES structures. SMILES should be organized in an even number of files to make their handling more efficient during DD, using
+Databases for DD should be obtained in SMILE format. For each compound of the database, DD requires the Morgan fingerprints of radius 2 and size 1024 bits, represented as the list of the indexes of bits that are set to 1. The  Utilities folder of this repository provides tools to facilitate the preparation of a database of SMILES structures. First, it is recommended to split the SMILES into a number of evenly populated files to facilitate other steps such as random sampling and inference, and place these files into a new folder. This reorganization can be achieved for example with *split* command in bash, and the resulting files should have txt extensions. For example, considering a *smiles.smi* file with 1 billion of compounds, to obtain 1000 evenly splitted txt files
 
 ```bash
-python smile_simplification.py -sfp path_smile_folder -tp num_cpus -tn final_number_of_files
+split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
 ```
 
-with num_cpus = number of CPUS to use for multiprocessing SMILE reorganization. Morgan fingerprints can be then generated in the correct DD format with
+Ideally the number of final files should be equal to the number of CPUs used for random sampling (phase 1, see below) and always larger than the number of GPUs used for inference (phase 3, see below). 
+
+Morgan fingerprints can be then generated in the correct DD format with
 
 ```bash
-python Morgan_fing.py -sfp path_smile_folder/smile_folder -fp path_morgan_folder -fn name_morgan_folder -tp num_cpus
+python Morgan_fing.py -sfp path_smile_folder -fp path_to_morgan_folder -fn name_morgan_folder -tp num_cpus
 ```
+
+with num_cpus = number of CPUs for multiprocessing Morgan fingeprint calculations.
 
 
 ### Phase 1. Random sampling of molecules
