@@ -20,13 +20,13 @@ def print(*args, **kwargs):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-pt', '--project_name',required=True)
-parser.add_argument('-fp', '--file_path',required=True)
-parser.add_argument('-it', '--n_iteration',required=True)
-parser.add_argument('-dd', '--data_directory',required=True)
-parser.add_argument('-t_pos', '--tot_process',required=True)
-parser.add_argument('-tr_sz', '--train_size',required=True)
-parser.add_argument('-vl_sz', '--val_size',required=True)
+parser.add_argument('-pt', '--project_name',required=True,help='Name of the DD project')
+parser.add_argument('-fp', '--file_path',required=True,help='Path to the project directory, excluding project directory name')
+parser.add_argument('-it', '--n_iteration',required=True,help='Number of current iteration')
+parser.add_argument('-dd', '--data_directory',required=True,help='Path to directory containing the remaining molecules of the database')
+parser.add_argument('-t_pos', '--tot_process',required=True,help='Number of CPUs to use for multiprocessing')
+parser.add_argument('-tr_sz', '--train_size',required=True,help='Size of training set')
+parser.add_argument('-vl_sz', '--val_size',required=True,help='Size of validation and test set')
 io_args = parser.parse_args()
 
 protein = io_args.project_name

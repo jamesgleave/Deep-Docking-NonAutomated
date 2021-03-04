@@ -21,15 +21,15 @@ def print(*args, **kwargs):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-n_it','--n_iteration',required=True)
-parser.add_argument('-d_path','--data_path',required=True)
-parser.add_argument('-mdd','--morgan_directory',required=True)
+parser.add_argument('-n_it','--n_iteration',required=True,help='Number of current iteration')
+parser.add_argument('-d_path','--data_path',required=True,help='Path to project folder, including prject folder name')
+parser.add_argument('-mdd','--morgan_directory',required=True,help='Path to Morgan fingerprint directory for the database')
 
 # adding parameter for where to save all the data to:
 parser.add_argument('-s_path', '--save_path', required=False, default=None)
 
 # allowing for variable number of molecules to train from:
-parser.add_argument('-n_mol', '--number_mol', required=False, default=3000000)
+parser.add_argument('-n_mol', '--number_mol', required=False, default=3000000, , help='Size of test/validation set to be used')
 parser.add_argument('-cont', '--continuous', required=False, action='store_true')   # Using binary or continuous labels
 parser.add_argument('-smile', '--smiles', required=False, action='store_true') # Using smiles or morgan as or continuous labels
 

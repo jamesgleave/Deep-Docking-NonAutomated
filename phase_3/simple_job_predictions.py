@@ -3,10 +3,10 @@ import glob
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-protein', '--protein', required=True)
-parser.add_argument('-file_path', '--file_path', required=True)
-parser.add_argument('-n_it', '--n_it', required=True)
-parser.add_argument('-mdd', '--morgan_directory', required=True)
+parser.add_argument('-protein', '--protein', required=True, help='Name of DD project')
+parser.add_argument('-file_path', '--file_path', required=True, help='PAth to project folder without project folder name')
+parser.add_argument('-n_it', '--n_it', required=True, help='Number of current iteration')
+parser.add_argument('-mdd', '--morgan_directory', required=True, help='PAth to Morgan fingerprint directory')
 
 # adding parameter for where to save all the data to:
 parser.add_argument('-save', '--save_path', required=False, default=None)

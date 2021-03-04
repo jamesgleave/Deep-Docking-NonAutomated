@@ -22,27 +22,27 @@ START_TIME = time.time()
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-n_it','--iteration_no',required=True)
-parser.add_argument('-mdd','--morgan_directory',required=True)
-parser.add_argument('-time','--time',required=True)
-parser.add_argument('-file_path','--file_path',required=True)
-parser.add_argument('-nhp','--number_of_hyp',required=True)
-parser.add_argument('-titr','--total_iterations',required=True)
+parser.add_argument('-n_it','--iteration_no',required=True,help='Number of current iteration')
+parser.add_argument('-mdd','--morgan_directory',required=True,help='Path to the Morgan fingerprint directory for the database')
+parser.add_argument('-time','--time',required=True,help='Time limit for training')
+parser.add_argument('-file_path','--file_path',required=True,help='Path to the project directory, including project directory name')
+parser.add_argument('-nhp','--number_of_hyp',required=True,help='Number of hyperparameters')
+parser.add_argument('-titr','--total_iterations',required=True,help='Desired total number of iterations')
 
-parser.add_argument('-isl','--is_last',required=False, action='store_true')
+parser.add_argument('-isl','--is_last',required=False, action='store_true',help='True/False for is this last iteration')
 
 # adding parameter for where to save all the data to:
 parser.add_argument('-save', '--save_path', required=False, default=None)
 
 # allowing for variable number of molecules to test and validate from:
-parser.add_argument('-n_mol', '--number_mol', required=False, default=1000000)
+parser.add_argument('-n_mol', '--number_mol', required=False, default=1000000, help='Size of test/validation set to be used')
 
-parser.add_argument('-pfm', '--percent_first_mols', required=False, default=-1)  # these two inputs must be percentages
-parser.add_argument('-plm', '--percent_last_mols', required=False, default=-1)
+parser.add_argument('-pfm', '--percent_first_mols', required=False, default=-1, help='Percentage of top scoring molecules to be considered as virtual hits in the first iteration (for standard DD run on 11 iterations, we recommend 0.01)')  # these two inputs must be percentages
+parser.add_argument('-plm', '--percent_last_mols', required=False, default=-1, help='Percentage of top scoring molecules to be considered as virtual hits in the last iteration (for standard DD run on 11 iterations, we recommend 0.0001)')
 
 
 # Pass the threshold
-parser.add_argument('-ct', required=False, default=0.9)
+parser.add_argument('-ct', required=False, default=0.9, help='Recall, [0,1] range')
 
 # Flag for switching between functions that determine how many mols to be left at the end of iteration 
 #   if not provided it defaults to a linear dec
