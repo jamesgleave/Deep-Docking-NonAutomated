@@ -14,12 +14,12 @@ def print(*args, **kwargs):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-if', '--is_final', required=True)
-parser.add_argument('-n_it', '--iteration_no', required=True)
-parser.add_argument('-protein', '--protein', required=True)
-parser.add_argument('-file_path', '--file_path', required=True)
-parser.add_argument('-t_pos', '--tot_process', required=True)
-parser.add_argument('-score', '--score_keyword', required=True)
+parser.add_argument('-if', '--is_final', required=True, help='True/False for is this the final iteration?')
+parser.add_argument('-n_it', '--iteration_no', required=True, help='Number of current iteration')
+parser.add_argument('-protein', '--protein', required=True, help='Name of the DD project')
+parser.add_argument('-file_path', '--file_path', required=True, help='Path to the project directory, excluding project directory name')
+parser.add_argument('-t_pos', '--tot_process', required=True, help='Number of CPUs to use for multiprocessing')
+parser.add_argument('-score', '--score_keyword', required=True, help='Score keyword. Name of the field storing the docking score in the SDF files of docking results')
 
 io_args = parser.parse_args()
 
