@@ -39,7 +39,7 @@ ADD HELP TOO
 In phase 1 molecules are randomly sampled from the database to build or augment the training set. During the first iteration, molecules are also sampled for generating the validation and test sets.
 
 #### Run phase 1
-To run phase_1, run the following sequence of scripts for random sampling of the database, and for extracting Morgan fingerprints and SMILES of the sampled molecules:
+To run phase 1, run the following sequence of scripts for random sampling of the database, and for extracting Morgan fingerprints and SMILES of the sampled molecules:
 
 ```bash
 python molecular_file_count_updated.py -pt project_name -it current_iteration -cdd left_mol_directory -t_pos num_cpus -t_samp molecules_to_dock
@@ -113,9 +113,3 @@ python final_extraction.py -smile_dir path_to_smile_dir -prediction_dir path_to_
 ```
 
 Executing this script will return the list of SMILES of all the predicted virtual hits of the last iteration or the top num_molecules_to_dock molecules ranked by their probabilities, whichever is smaller. Probabilities will also be returned in a separated file.
-
-
-
-
-
-
