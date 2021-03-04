@@ -50,11 +50,11 @@ python Extracting_smiles.py -pt project_name -fp path_to_project_without_name -i
 ```
 SANITY CHECK MISSING
 
-* *molecular_file_count_updated.py* determines the number of molecules to be sampled from each file of the database, according to the desired number of molecules to sample. The sample sizes (per million) are stored in *Mol_ct_file_updated.csv* file created in the Morgan directory.
+* *molecular_file_count_updated.py* determines the number of molecules to be sampled from each file of the database, according to the desired number of molecules to sample. The sample sizes (per million) are stored in *Mol_ct_file_updated.csv* file created in the left_mol_directory directory.
 
 * *sampling.py* randomly samples the desired number of molecules for training, validation and test set during the first iteration, and for training only from the second iteration onwards. 
 
-**IMPORTANT NOTE FOR *molecular_file_count_updated.py* AND *sampling.py*:** left_mol_directory is the directory from where molecules are sampled for DD; for iteration 1, left_mol_directory is the directory storing the Morgan fingerprints of the database; in any other iteration, this must be the path to *morgan_1024_predictions* folder of the previous iteration; for example, in iteration 2
+**IMPORTANT NOTE FOR *molecular_file_count_updated.py* AND *sampling.py*:** left_mol_directory is the directory from where molecules are sampled; for iteration 1, left_mol_directory is the directory storing the Morgan fingerprints of the database; for any other iteration, this must be the path to *morgan_1024_predictions* folder of the previous iteration; for example, in iteration 2
 
 ```bash
 python molecular_file_count_updated.py -pt project_name -it current_iteration -cdd /path_to_project/project_name/iteration_1/morgan_1024_predictions -t_pos num_cpus -t_samp molecules_to_dock
