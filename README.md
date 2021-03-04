@@ -105,7 +105,7 @@ The generated bash scripts can be run on GPU nodes to predict virtual hits from 
 
 
 
-#### After Deep Docking
+### After Deep Docking
 After the last iteration of DD is complete, SMILES of all or a ranked subset of the predicted virtual hits can be obtained for the final docking. Ranking is based on the probabilities of being virtual hits. Use
 
 ```bash
