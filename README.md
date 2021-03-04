@@ -111,8 +111,8 @@ python simple_job_predictions.py -protein project_name -file_path path_to_projec
 The generated bash scripts can be run on GPU nodes to predict virtual hits from the full database. Predicted compounds will be stored in *morgan_1024_predictions* folder of the current iteration.
 
 
-### After Deep Docking
-After the last iteration of DD is complete, SMILES of all or a ranked subset of the predicted virtual hits can be obtained for the final docking. Ranking is based on the probabilities of being virtual hits. Use
+### After Deep Docking. The final phase
+After the last iteration of DD is complete, SMILES of all or a ranked subset of the predicted virtual hits can be obtained for the final docking. Ranking is based on the probabilities of being virtual hits. Use the following script (availabe in *final_phase*)
 
 ```bash
 python final_extraction.py -smile_dir path_to_smile_dir -prediction_dir path_to_predictions_last_iter -processors n_cpus -mols_to_dock num_molecules_to_dock
