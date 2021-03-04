@@ -28,12 +28,12 @@ split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
 
 Ideally the number of final files should be equal to the number of CPUs used for random sampling (phase 1, see below) and always larger than the number of GPUs used for inference (phase 3, see below). 
 
-Morgan fingerprints can be then generated in the correct DD format using the *Morgan_fing.py* script (TO ADD in Utilities):
+Morgan fingerprints can be then generated in the correct DD format using the *Morgan_fing.py* script:
 
 ```bash
 python Morgan_fing.py -sfp path_smile_folder -fp path_to_morgan_folder -fn name_morgan_folder -tp num_cpus
 ```
-ADD HELP TOO
+which will create all the fingerprints in path_to_morgan_folder/name_morgan_folder.
 
 ### Phase 1. Random sampling of molecules
 In phase 1 molecules are randomly sampled from the database to build or augment the training set. During the first iteration, molecules are also sampled for generating the validation and test sets.
@@ -48,7 +48,6 @@ python sanity_check.py -pt project_name -fp path_to_project_without_name -it cur
 python Extracting_morgan.py -pt project_name -fp path_to_project_without_name -it current_iteration -md morgan_directory -t_pos total_processors
 python Extracting_smiles.py -pt project_name -fp path_to_project_without_name -it current_iteration -fn 0 -smd smile_directory -sd NA -t_pos num_cpus -if True/False
 ```
-SANITY CHECK MISSING
 
 * *molecular_file_count_updated.py* determines the number of molecules to be sampled from each file of the database, according to the desired number of molecules to sample. The sample sizes (per million) are stored in *Mol_ct_file_updated.csv* file created in the left_mol_directory directory.
 
