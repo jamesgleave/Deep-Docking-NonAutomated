@@ -23,18 +23,18 @@ def merge_on_smiles(pred_file):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-smile_dir", required=True)
-    parser.add_argument("-morgan_dir", required=True)
-    parser.add_argument("-processors", required=True)
-    parser.add_argument("-mols_to_dock", required=False, type=int)
+    parser.add_argument("-smile_dir", required=True, help='Path to SMILES directory for the database')
+    parser.add_argument("-prediction_dir", required=True, help='Path to morgan_1024_predicitions of last iteration')
+    parser.add_argument("-processors", required=True, help='Number of CPUs for multiprocessing')
+    parser.add_argument("-mols_to_dock", required=False, type=int, help='Desired number of molecules to dock')
 
     args = parser.parse_args()
     predictions = []
 
     # Find all smile files
-    print("Morgan Dir: " + args.morgan_dir)
+    print("Morgan Dir: " + args.prediction_dir)
     print("Smile Dir: " + args.smile_dir)
-    for file in glob.glob(args.morgan_dir + "/*"):
+    for file in glob.glob(args.prediction_dir + "/*"):
         if "smile" in os.path.basename(file):
             print(" - " + os.path.basename(file))
             predictions.append(file)
