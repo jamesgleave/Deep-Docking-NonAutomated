@@ -1,6 +1,6 @@
 # Deep-Docking-NonAutomated
 
-Deep docking (DD) is a deep learning-based tool developed to accelerate docking-based virtual screening. Using a docking program of choice, one can screen extensive chemical libraries like ZINC15 (containing > 1.3 billion molecules) 50 times faster than typical docking. For further details into the processes behind DD, please refer to our paper (https://doi.org/10.1021/acscentsci.0c00229). This repository provides all the scripts required to run the DD process, except ligand preparation and molecular docking 9which can be done with a wide range of licensed and/or free programs).
+Deep docking (DD) is a deep learning-based tool developed to accelerate docking-based virtual screening. Using a docking program of choice, one can screen extensive chemical libraries like ZINC15 (containing > 1.3 billion molecules) 50 times faster than typical docking. For further details into the processes behind DD, please refer to our paper (https://doi.org/10.1021/acscentsci.0c00229). This repository provides all the scripts required to run the DD process, except ligand preparation and molecular docking (which can be done with many licensed and/or free programs).
 
 If you use DD, please cite:
 
