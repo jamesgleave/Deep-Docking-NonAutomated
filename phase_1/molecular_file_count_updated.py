@@ -20,7 +20,7 @@ def print(*args, **kwargs):
 parser = argparse.ArgumentParser()
 parser.add_argument('-pt','--project_name',required=True,help='Name of the DD project')
 parser.add_argument('-it','--n_iteration',required=True,help='Number of current DD iteration')
-parser.add_argument('-cdd','--data_directory',required=True,help='Path to directory containing Morgan fingerprints for the database')
+parser.add_argument('-cdd','--data_directory',required=True,help='Path to directory contaning the remaining molecules of the database ')
 parser.add_argument('-t_pos','--tot_process',required=True,help='Number of CPUs to use for multiprocessing')
 parser.add_argument('-t_samp','--tot_sampling',required=True,help='Total number of molecules to sample in the current iteration; for first iteration, consider training, validation and test sets, for others only training')
 io_args = parser.parse_args()
