@@ -33,7 +33,7 @@ Morgan fingerprints can be then generated in the correct DD format using the *Mo
 ```bash
 python Morgan_fing.py -sfp path_smile_folder -fp path_to_morgan_folder -fn name_morgan_folder -tp num_cpus
 ```
-which will create all the fingerprints in path_to_morgan_folder/name_morgan_folder.
+which will create all the fingerprints in *path_to_morgan_folder/name_morgan_folder*.
 
 ### Phase 1. Random sampling of molecules
 In phase 1 molecules are randomly sampled from the database to build or augment the training set. During the first iteration, molecules are also sampled for generating the validation and test sets.
