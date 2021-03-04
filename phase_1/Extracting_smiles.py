@@ -9,14 +9,14 @@ import time
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-pt', '--project_name', required=True)
-parser.add_argument('-fp', '--file_path', required=True)
-parser.add_argument('-it', '--n_iteration', required=True)
-parser.add_argument('-fn', '--file_no', required=True)
-parser.add_argument('-smd', '--smile_directory', required=True)
-parser.add_argument('-sd', '--sdf_directory', required=True)
-parser.add_argument('-t_pos', '--tot_process', required=True)
-parser.add_argument('-if', '--is_final', required=True)
+parser.add_argument('-pt', '--project_name', required=True, help='Name of the DD project')
+parser.add_argument('-fp', '--file_path', required=True, help='Path to the project directory, excluding project directory name')
+parser.add_argument('-it', '--n_iteration', required=True, help='Number of current iteration')
+parser.add_argument('-fn', '--file_no', required=True, help='Not available yet. Set to 0')
+parser.add_argument('-smd', '--smile_directory', required=True, help='Path to SMILES directory of the database')
+parser.add_argument('-sd', '--sdf_directory', required=True, help='Path to SDF, not available yet. Set =to NA')
+parser.add_argument('-t_pos', '--tot_process', required=True, help='Number of CPUs to use for multiprocessing')
+parser.add_argument('-if', '--is_final', required=True, help='True/False for is this final iteration?')
 
 io_args = parser.parse_args()
 protein = io_args.project_name
