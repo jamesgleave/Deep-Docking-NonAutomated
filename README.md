@@ -34,7 +34,7 @@ split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
 
 Ideally the number of final files should be equal to the number of CPUs used for random sampling (phase 1, see below) and always larger than the number of GPUs used for inference (phase 3, see below). 
 
-Morgan fingerprints can be then generated in the correct DD format using the *Morgan_fing.py* script:
+Morgan fingerprints (in *utilities*) can be then generated in the correct DD format using the *Morgan_fing.py* script:
 
 ```bash
 python Morgan_fing.py -sfp path_smile_folder -fp path_to_morgan_folder -fn name_morgan_folder -tp num_cpus
