@@ -2,9 +2,9 @@ import argparse
 import glob
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-pt','--protein_name',required=True)
-parser.add_argument('-fp','--file_path',required=True)
-parser.add_argument('-it','--n_iteration',required=True)
+parser.add_argument('-pt','--protein_name',required=True,help='Name of project')
+parser.add_argument('-fp','--file_path',required=True,help='Path to project folder without anme of project folder')
+parser.add_argument('-it','--n_iteration',required=True,help='Number of current iteration')
 
 io_args = parser.parse_args()
 import time
