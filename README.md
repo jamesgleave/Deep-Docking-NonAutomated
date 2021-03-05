@@ -124,4 +124,4 @@ After the last iteration of DD is complete, SMILES of all or a ranked subset of 
 python final_extraction.py -smile_dir path_to_smile_dir -prediction_dir path_to_predictions_last_iter -processors n_cpus -mols_to_dock num_molecules_to_dock
 ```
 
-Executing this script will return the list of SMILES of all the predicted virtual hits of the last iteration or the top `num_molecules_to_dock molecules` ranked by their probabilities, whichever is smaller. Probabilities will also be returned in a separated file.
+Executing this script will return the list of SMILES of all the predicted virtual hits of the last iteration or the top `num_molecules_to_dock` molecules ranked by their probabilities, whichever is smaller. Probabilities will also be returned in a separated file.
