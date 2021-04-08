@@ -160,16 +160,17 @@ print('Total hyp:', len(all_hyperparas))
 
 # Creating all the jobs for each hyperparameter combination:
 
-other_args = ' '.join(extra_args) + ' -n_it {} -t_mol {} --data_path {} --save_path {} -n_mol {}'.format(n_it, t_mol, DATA_PATH, SAVE_PATH, num_molec)
+other_args = ' '.join(extra_args) + '-rec {} -n_it {} -t_mol {} --data_path {} --save_path {} -n_mol {}'.format(ct, n_it, t_mol, DATA_PATH, SAVE_PATH, num_molec)
 print(other_args)
+count = 1
 for i in range(len(all_hyperparas)):
-    with open(SAVE_PATH+'/iteration_'+str(n_it)+'/simple_job/simple_job_'+str(ct)+'.sh', 'w') as ref:
+    with open(SAVE_PATH+'/iteration_'+str(n_it)+'/simple_job/simple_job_'+str(count)+'.sh', 'w') as ref:
         ref.write('#!/bin/bash\n')
         cwd = os.getcwd()
         ref.write('cd {}\n'.format(cwd))
         hyp_args = '-os {} -bs {} -num_units {} -dropout {} -learn_rate {} -bin_array {} -wt {} -cf {}'.format(*all_hyperparas[i])
         ref.write('python -u progressive_docking.py ' + hyp_args + ' ' + other_args)
         ref.write("\n echo complete")
-    ct += 1
-
+    count += 1
+    
 print('Runtime:', time.time() - START_TIME)
