@@ -57,7 +57,7 @@ time_model = io_args.time
 nhp = int(io_args.number_of_hyp)
 isl = io_args.is_last
 titr = int(io_args.total_iterations)
-ct = int(io_args.ct)
+rec = float(io_args.ct)
 
 num_molec = int(io_args.number_mol)
 
@@ -160,7 +160,7 @@ print('Total hyp:', len(all_hyperparas))
 
 # Creating all the jobs for each hyperparameter combination:
 
-other_args = ' '.join(extra_args) + '-rec {} -n_it {} -t_mol {} --data_path {} --save_path {} -n_mol {}'.format(ct, n_it, t_mol, DATA_PATH, SAVE_PATH, num_molec)
+other_args = ' '.join(extra_args) + '-rec {} -n_it {} -t_mol {} --data_path {} --save_path {} -n_mol {}'.format(rec, n_it, t_mol, DATA_PATH, SAVE_PATH, num_molec)
 print(other_args)
 count = 1
 for i in range(len(all_hyperparas)):
