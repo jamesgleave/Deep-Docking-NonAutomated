@@ -37,12 +37,12 @@ parser.add_argument('-save', '--save_path', required=False, default=None)
 # allowing for variable number of molecules to test and validate from:
 parser.add_argument('-n_mol', '--number_mol', required=False, default=1000000, help='Size of test/validation set to be used')
 
-parser.add_argument('-pfm', '--percent_first_mols', required=False, default=-1, help='Percentage of top scoring molecules to be considered as virtual hits in the first iteration (for standard DD run on 11 iterations, we recommend 0.01)')  # these two inputs must be percentages
-parser.add_argument('-plm', '--percent_last_mols', required=False, default=-1, help='Percentage of top scoring molecules to be considered as virtual hits in the last iteration (for standard DD run on 11 iterations, we recommend 0.0001)')
+parser.add_argument('-pfm', '--percent_first_mols', required=False, default=-1, help='Fraction of top scoring molecules to be considered as virtual hits in the first iteration (for standard DD run on 11 iterations, we recommend 0.01)')  # these two inputs must be percentages
+parser.add_argument('-plm', '--percent_last_mols', required=False, default=-1, help='Fraction of top scoring molecules to be considered as virtual hits in the last iteration (for standard DD run on 11 iterations, we recommend 0.0001)')
 
 
 # Pass the threshold
-parser.add_argument('-ct', required=False, default=0.9, help='Recall, [0,1] range')
+parser.add_argument('-ct', required=False, default=0.9, help='Recall, [0,1] range, default value 0.9')
 
 # Flag for switching between functions that determine how many mols to be left at the end of iteration 
 #   if not provided it defaults to a linear dec
