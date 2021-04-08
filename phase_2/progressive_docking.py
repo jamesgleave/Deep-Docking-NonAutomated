@@ -28,6 +28,7 @@ parser.add_argument('-learn_rate','--lr',required=True)
 parser.add_argument('-bin_array','--ba',required=True)
 parser.add_argument('-wt','--wt',required=True)
 parser.add_argument('-cf','--cf',required=True)
+parser.add_argument('-rec','--rec',required=True)
 parser.add_argument('-n_it','--n_it',required=True)
 parser.add_argument('-t_mol','--t_mol',required=True)
 parser.add_argument('-bs','--bs',required=True)
@@ -54,6 +55,7 @@ lr = float(io_args.lr)
 ba = int(io_args.ba)
 wt = float(io_args.wt)
 cf = float(io_args.cf)
+rec = float(io_args.rec)
 n_it = int(io_args.n_it)
 bs = int(io_args.bs)
 oss = int(io_args.os)
@@ -478,10 +480,10 @@ print('Getting stats from predictions...')
 precision_vl, recall_vl, thresholds_vl = precision_recall_curve(y_valid, prediction_valid)
 fpr_vl, tpr_vl, thresh_vl = roc_curve(y_valid, prediction_valid)
 auc_vl = auc(fpr_vl,tpr_vl)
-pr_vl = precision_vl[np.where(recall_vl>0.9)[0][-1]]
+pr_vl = precision_vl[np.where(recall_vl>rec)[0][-1]]
 pos_ct_orig = np.sum(y_valid)
-Total_left = 0.9*pos_ct_orig/pr_vl*total_mols*1000000/len(y_valid)
-tr = thresholds_vl[np.where(recall_vl>0.90)[0][-1]]
+Total_left = rec*pos_ct_orig/pr_vl*total_mols*1000000/len(y_valid)
+tr = thresholds_vl[np.where(recall_vl>rec)[0][-1]]
 
 # Getting stats for testing
 precision_te, recall_te, thresholds_te = precision_recall_curve(y_test,prediction_test)
