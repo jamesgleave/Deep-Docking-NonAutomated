@@ -5,11 +5,9 @@ The model to be used in deep docking
 James Gleave
 """
 
+import keras
 from ML.lasso_regularizer import Lasso
-from ML.transformer_layers import *
 from ML.DDMetrics import *
-
-from tensorflow.keras import regularizers
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import (Input, Dense, Activation, BatchNormalization, Dropout, LSTM,
                           Conv2D, MaxPool2D, Flatten, Embedding, MaxPooling1D,
