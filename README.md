@@ -25,7 +25,8 @@ For help with the options for a specific script, type
 ```
 python script.py -h
 ```
-
+## Before Starting
+You need to fill in the `activation_script.sh` file in `phase_2-3` so that it can automatically activate your conda environment when training.
 
 ## Preparing a database for Deep Docking
 Databases for DD should be in SMILE format. For each compound of the database, DD requires the Morgan fingerprints of radius 2 and size 1024 bits, represented as the list of the indexes of bits that are set to 1. 
