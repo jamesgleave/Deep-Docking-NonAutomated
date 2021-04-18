@@ -29,7 +29,7 @@ parser.add_argument('-mdd','--morgan_directory',required=True,help='Path to Morg
 parser.add_argument('-s_path', '--save_path', required=False, default=None)
 
 # allowing for variable number of molecules to train from:
-parser.add_argument('-n_mol', '--number_mol', required=False, default=3000000, , help='Size of test/validation set to be used')
+parser.add_argument('-n_mol', '--number_mol', required=False, default=3000000, help='Size of test/validation set to be used')
 parser.add_argument('-cont', '--continuous', required=False, action='store_true')   # Using binary or continuous labels
 parser.add_argument('-smile', '--smiles', required=False, action='store_true') # Using smiles or morgan as or continuous labels
 
