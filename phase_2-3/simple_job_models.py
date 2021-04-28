@@ -72,10 +72,7 @@ SAVE_PATH = io_args.save_path
 # if no save path is provided we just save it in the same location as the data
 if SAVE_PATH is None: SAVE_PATH = DATA_PATH
 
-# sums the first column and divides it by 1 million 
-## is this the average score for the molecules? Why divide by 1000000?
-### [[0]] would return a dataframe and .sum() is buggy on dataframes (see: https://stackoverflow.com/questions/52912693/pandas-sum-return-the-infinite-value)
-### replace with => pd.to_numeric(df[0]).sum()  # returns a single number representing the sum
+# sums the first column and divides it by 1 million (this is our total database size)
 t_mol = pd.read_csv(mdd+'/Mol_ct_file.csv',header=None)[[0]].sum()[0]/1000000 # num of compounds in each file is mol_ct_file
 
 cummulative = 0.25*n_it
