@@ -16,7 +16,7 @@ parser.add_argument('-fn', '--file_no', required=True, help='Not available yet. 
 parser.add_argument('-smd', '--smile_directory', required=True, help='Path to SMILES directory of the database')
 parser.add_argument('-sd', '--sdf_directory', required=True, help='Path to SDF, not available yet. Set =to NA')
 parser.add_argument('-t_pos', '--tot_process', required=True, help='Number of CPUs to use for multiprocessing')
-parser.add_argument('-if', '--is_final', required=True, help='True/False for is this final iteration?')
+parser.add_argument('-if', '--is_final', required=False, help='True/False for is this final iteration?', default=False) # TODO: remove all references to is_final (deprecated)
 
 io_args = parser.parse_args()
 protein = io_args.project_name
