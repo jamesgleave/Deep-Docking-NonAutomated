@@ -52,7 +52,7 @@ def get_mol_final(fname):
     return to_return
 
 
-def get_mol(fname):
+def get_mol(fname): # TODO: Deprecated no longer needed (sdf folder gone)
     train = {}
     test = {}
     valid = {}
@@ -261,7 +261,7 @@ if __name__ == '__main__':
 
     else:
         print('not final')
-        t = time.time()
+        t = time.time() #TODO: Deprecated  (files are from the sdf_directory and are not needed anymore)
         if len(files) == 0:
             return_mols_per_file = []
         else:
