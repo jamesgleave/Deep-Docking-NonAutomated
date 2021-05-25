@@ -34,7 +34,7 @@ Databases for DD should be in SMILE format. For each compound of the database, D
 First, it is recommended to split the SMILES into a number of evenly populated files to facilitate other steps such as random sampling and inference, and place these files into a new folder. This reorganization can be achieved for example with the `split` command in bash, and the resulting files should have `.txt` extensions. For example, consider a `smiles.smi` file with a billion compounds, to obtain 1000 evenly split .txt files of 1 million lines each we run:
 
 ```bash
-split -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
+split -d -l 1000000 smiles.smi smile_all_ --additional-suffix=.txt
 ```
 
 Ideally the number of split files should be equal to the number of CPUs used for random sampling (phase 1, see below), but always larger than the number of GPUs used for inference (phase 3, see below). 
