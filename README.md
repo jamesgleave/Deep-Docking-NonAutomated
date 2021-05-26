@@ -58,7 +58,7 @@ python molecular_file_count_updated.py -pt project_name -it current_iteration -c
 python sampling.py -pt project_name -fp path_to_project_without_name -it current_iteration -dd left_mol_directory -t_pos total_processors -tr_sz train_size -vl_sz val_size
 python sanity_check.py -pt project_name -fp path_to_project_without_name -it current_iteration
 python Extracting_morgan.py -pt project_name -fp path_to_project_without_name -it current_iteration -md morgan_directory -t_pos total_processors
-python Extracting_smiles.py -pt project_name -fp path_to_project_without_name -it current_iteration -fn 0 -smd smile_directory -sd NA -t_pos num_cpus -if True/False
+python Extracting_smiles.py -pt project_name -fp path_to_project_without_name -it current_iteration -smd smile_directory -t_pos num_cpus
 ```
 
 * `molecular_file_count_updated.py` determines the number of molecules to be sampled from each file of the database, according to the desired number of molecules to sample. The sample sizes (per million) are stored in `Mol_ct_file_updated.csv` file created in the `left_mol_directory` directory.
