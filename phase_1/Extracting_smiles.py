@@ -19,7 +19,6 @@ io_args = parser.parse_args()
 protein = io_args.project_name
 file_path = io_args.file_path
 n_it = int(io_args.n_iteration)
-sdf_directory = io_args.sdf_directory
 smile_directory = io_args.smile_directory
 tot_process = int(io_args.tot_process)
 
