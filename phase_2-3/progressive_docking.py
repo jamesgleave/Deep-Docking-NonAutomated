@@ -427,7 +427,7 @@ except IOError:  # file doesnt exist yet
         ref.write(str(mn))
 
 num_epochs = 500
-cw = {0:wt, 1:1}  # Just swapped the weight values to test
+cw = {0:1, 1:wt}
 es = EarlyStopping(monitor='val_loss', min_delta=0, patience=10, verbose=0, mode='auto')
 es1 = TimedStopping(seconds=36000)   # stop training after 10 hours
 logger = DDLogger(
