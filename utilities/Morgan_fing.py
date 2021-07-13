@@ -50,7 +50,7 @@ def morgan_fingp(fname):
             smile,zin_id = line.rstrip().split()
             arg = np.zeros((1,))
             try:
-                DataStructs.ConvertToNumpyArray(AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(smile),radius,nBits=nbits),arg)
+                DataStructs.ConvertToNumpyArray(AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(smile),radius,nBits=nbits,useChirality=True),arg)
 
                 ref2.write((',').join([zin_id]+[str(elem) for elem in np.where(arg==1)[0]]))
                 ref2.write('\n')
