@@ -77,45 +77,11 @@ if __name__ == '__main__':
     for f in glob.glob(smile_directory + "/*.txt"):
         files_smiles.append(f)
 
-    return_mols_per_file = []
-    for j in range(3):
-        ct = 0
-        for i in range(len(return_mols_per_file)):
-            ct += len(return_mols_per_file[i][j])
-        print(ct)
-
-    for k in range(3):
-        t = time.time()
-        for i in range(len(return_mols_per_file)):
-            for j in range(i + 1, len(return_mols_per_file)):
-                for keys in return_mols_per_file[i][k].keys():
-                    if keys in return_mols_per_file[j][k]:
-                        return_mols_per_file[j][k].pop(keys)
-        print(time.time() - t)
-
-    for j in range(3):
-        ct = 0
-        for i in range(len(return_mols_per_file)):
-            ct += len(return_mols_per_file[i][j])
-        print(ct)
-
-    train = {}
-    valid = {}
-    test = {}
-    for j in range(3):
-        for i in range(len(return_mols_per_file)):
-            for keys in return_mols_per_file[i][j]:
-                if j == 0:
-                    train[keys] = 0
-                elif j == 1:
-                    valid[keys] = 0
-                elif j == 2:
-                    test[keys] = 0
-
+    # getting training, validation, and testing molec IDs from the sets created by `sampling.py`
     all_train = {}
     all_valid = {}
     all_test = {}
-    with open(ITER_PATH + "/train_set.txt", 'r') as ref:
+    with open(ITER_PATH + "/train_set.txt", 'r') as ref: # each txt file contains the IDs corresponding to a morgan fingerprint in morgan folder of that iteration
         for line in ref:
             all_train[line.rstrip()] = 0
 
@@ -126,15 +92,6 @@ if __name__ == '__main__':
     with open(ITER_PATH + "/test_set.txt", 'r') as ref:
         for line in ref:
             all_test[line.rstrip()] = 0
-
-    for keys in train.keys():
-        all_train.pop(keys)
-
-    for keys in valid.keys():
-        all_valid.pop(keys)
-
-    for keys in test.keys():
-        all_test.pop(keys)
 
     print(len(all_train), len(all_valid), len(all_test))
 
