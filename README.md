@@ -10,7 +10,7 @@ Gentile F, Agrawal V, Hsing M, Ton A-T, Ban F, Norinder U, et al. *Deep Docking:
 
 ## Requirements
 * rdkit
-* tensorflow >= 1.14.0
+* tensorflow == 1.14.0
 * pandas
 * numpy
 * keras
