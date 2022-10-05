@@ -10,7 +10,7 @@ Gentile F, Agrawal V, Hsing M, Ton A-T, Ban F, Norinder U, et al. *Deep Docking:
 
 ## Requirements
 * rdkit
-* tensorflow == 1.14.0
+* tensorflow >= 1.14.0 (1.15 GPU version recommended. If you are using cuda11, please use [nvidia-tensorflow](https://developer.nvidia.com/blog/accelerating-tensorflow-on-a100-gpus/))
 * pandas
 * numpy
 * keras
