@@ -4,6 +4,7 @@ V 2.2.1
 
 import argparse
 import glob
+import gc
 import os
 import random
 import sys
@@ -108,7 +109,7 @@ def get_oversampled_morgan(Oversampled_zid, fname):
 
             # only extracting those that were randomly selected
             if (tmp[0] in Oversampled_zid.keys()) and (type(Oversampled_zid[tmp[0]]) != np.ndarray):
-                train_set = np.zeros([1,1024])
+                train_set = np.zeros([1,1024], dtype=np.bool)
                 on_bit_vector = tmp[1:]
 
                 for elem in on_bit_vector:
@@ -121,7 +122,7 @@ def get_oversampled_morgan(Oversampled_zid, fname):
 
 def get_morgan_and_scores(morgan_path, ID_labels):
     # ID_labels is a dataframe containing the zincIDs and their corresponding scores.
-    train_set = np.zeros([num_molec,1024], dtype=bool)  # using bool to save space
+    train_set = np.zeros([num_molec,1024], dtype=np.bool)  # using bool to save space
     train_id = []
     print('x data from:', morgan_path)
     with open(morgan_path,'r') as ref:
@@ -143,7 +144,7 @@ def get_morgan_and_scores(morgan_path, ID_labels):
     train_set = train_set[:line_no,:]
 
     print('Done...')
-    train_pd = pd.DataFrame(data=train_set, dtype=np.uint8)
+    train_pd = pd.DataFrame(data=train_set, dtype=np.bool)
     train_pd['ZINC_ID'] = train_id
 
     ID_labels = ID_labels.to_frame()
@@ -321,10 +322,10 @@ if SMILES:
     # The training data needs to be oversampled:
     print("Getting oversampled smiles...")
     Oversampled_zid = get_oversampled_smiles(Oversampled_zid, train_data.smile)
-    Oversampled_X_train = np.zeros([sample_size*2, len(list(Oversampled_zid.values())[0][0])])
+    Oversampled_X_train = np.zeros([sample_size*2, len(list(Oversampled_zid.values())[0][0])], dtype=np.bool)
     print(len(list(Oversampled_zid.values())[0]))
 else:
-    Oversampled_X_train = np.zeros([sample_size*2, 1024])
+    Oversampled_X_train = np.zeros([sample_size*2, 1024], dtype=np.bool)
     print('Using morgan fingerprints...')
     # this part is what gets the morgan fingerprints:
     print('looking through file path:', DATA_PATH + '/iteration_'+str(n_iteration)+'/morgan/*')
@@ -386,7 +387,19 @@ class TimedStopping(Callback):
             self.model.stop_training = True
             if self.verbose:
                 print('Stopping after %s seconds.' % self.seconds)
+#FREE MEMORY
 
+del data_from_prev
+del train_data
+del test_data
+del valid_data
+del Oversampled_zid
+del Oversampled_zid_y
+del y_valid_first
+del y_test_first
+gc.collect()
+
+#END FREE MEMORY
 
 print("Data prep time:", time.time() - START_TIME)
 print("Configuring model...")
